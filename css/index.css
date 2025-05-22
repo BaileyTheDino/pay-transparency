@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+  background-color: #2a6c5c;
+
+  display: flex;
+  justify-content: center;
+}
+
+main {
+    background-color: #193931;
+    width: 1000px;
+
+    padding: 1rem 2rem;
+
+    margin-top: 4rem;
+
+    * {
+        color: #edfffb;
+    }
+
+    @media (max-width: 1000px) {
+        width: 500px;
+    }
+
+    @media (max-width: 550px) {
+        width: 100vw;
+        margin-top: 0;
+    }
+}
+
+.timeline {
+    margin-left: 10px;
+
+    .item {
+        border-left: #2a6c5c solid 5px;
+        padding-left: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+.point-cursor {
+    cursor: pointer;
+}
