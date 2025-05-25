@@ -1,0 +1,151 @@
+[
+    {
+        "date": "2025-05",
+        "age": "26",
+        "maritalStatus": "not married | living",
+        "kids": "0",
+        "reason": "Just created this page and wanted to share the current state of things.",
+        "region": "Herentals",
+        "sector": "IT",
+        "role": "Shopware developer | Backend developer | Technology Lead Shopware",
+        "salary": {
+            "currency": "EUR",
+            "gross": "€3.159,00",
+            "net": "€2.273,51"
+        },
+        "benefits": {
+            "Monetary": [
+                "company car",
+                "'unlimited' gas card",
+                "€7 a day meal vouchers",
+                "mobile plan",
+                "company phone (With hardware budget)",
+                "pension plan"
+            ],
+            "Quality of life": [
+                "flexible working hours",
+                "easy to plan holidays",
+                "work from home possibility",
+                "paid lunch at work €3,30"
+            ],
+            "Holidays": [
+                "20 holidays",
+                "12 advantage days"
+            ],
+            "Other": [
+                "€200 hardware budget /year",
+                "€3000 training/travel budget /year"
+            ]
+        }
+    },
+    {
+        "date": "2024-09",
+        "age": "25",
+        "maritalStatus": "not married | living",
+        "kids": "0",
+        "reason": "Retro-actively adding some records. This is after my second 'promotion'.",
+        "region": "Herentals",
+        "sector": "IT",
+        "role": "Shopware developer | Backend developer | Technology Lead Shopware",
+        "salary": {
+            "currency": "EUR",
+            "gross": "€2.850,00",
+            "net": "€2.196,16"
+        },
+        "benefits": {
+            "Monetary": [
+                "company car",
+                "'unlimited' gas card",
+                "€7 a day meal vouchers",
+                "mobile plan",
+                "company phone (With hardware budget)",
+                "pension plan"
+            ],
+            "Quality of life": [
+                "flexible working hours",
+                "easy to plan holidays",
+                "work from home possibility",
+                "paid lunch at work €3,30"
+            ],
+            "Holidays": [
+                "20 holidays",
+                "12 advantage days"
+            ],
+            "Other": [
+                "€200 hardware budget /year",
+                "€3000 training/travel budget /year"
+            ]
+        }
+    },
+    {
+        "date": "2023-06",
+        "age": "24",
+        "maritalStatus": "not married | living",
+        "kids": "0",
+        "reason": "Retro-actively adding some records. This is a month after I got my first 'promotion'. It's the month after because the month before the holiday pay was also added. This would skew this list imo.",
+        "region": "Herentals",
+        "sector": "IT",
+        "role": "Shopware developer | Backend developer",
+        "salary": {
+            "currency": "EUR",
+            "gross": "€2.334,66",
+            "net": "€1.992,20"
+        },
+        "benefits": {
+            "Monetary": [
+                "company car",
+                "100 gas card",
+                "€7 a day meal vouchers",
+                "mobile plan"
+            ],
+            "Quality of life": [
+                "flexible working hours",
+                "easy to plan holidays",
+                "work from home possibility",
+                "paid lunch at work €3,30"
+            ],
+            "Holidays": [
+                "20 holidays",
+                "12 advantage days"
+            ],
+            "Other": [
+                "€200 hardware budget /year",
+                "€3000 training/travel budget /year"
+            ]
+        }
+    },
+    {
+        "date": "2022-08",
+        "age": "23",
+        "maritalStatus": "not married | living",
+        "kids": "0",
+        "reason": "Retro-actively adding some records. This is the first paycheck from when I started working after college.",
+        "region": "Herentals",
+        "sector": "IT",
+        "role": "Shopware developer | Backend developer",
+        "salary": {
+            "currency": "EUR",
+            "gross": "€2.200,00",
+            "net": "€1.951,87"
+        },
+        "benefits": {
+            "Monetary": [
+                "€7 a day meal vouchers"
+            ],
+            "Quality of life": [
+                "flexible working hours",
+                "easy to plan holidays",
+                "work from home possibility",
+                "paid lunch at work €3,30"
+            ],
+            "Holidays": [
+                "20 holidays",
+                "12 advantage days"
+            ],
+            "Other": [
+                "€200 hardware budget /year",
+                "€3000 training/travel budget /year"
+            ]
+        }
+    }
+]
