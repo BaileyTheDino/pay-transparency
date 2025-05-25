@@ -1,7 +1,28 @@
+/* Some janky ass code to make sure the file is being loaded. GitHub pages is acting weird. */
 window.addEventListener('load', () => {
-    fetch('../data.json')
-    .then((response) => response.json())
-    .then((data) => handleData(data));
+    fetch('./../data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Local file not found');
+            }
+            return response.json();
+        })
+        .then(data => handleData(data))
+        .catch(error => {
+            console.log('Falling back to online version:', error);
+            
+            fetch('https://baileythedino.github.io/pay-transparency/data.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Online file not found');
+                    }
+                    return response.json();
+                })
+                .then(data => handleData(data))
+                .catch(onlineError => {
+                    console.error('Both local and online fetch attempts failed:', onlineError);
+                });
+        });
 });
 
 function handleData(data) {
