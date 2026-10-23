@@ -1,25 +1,25 @@
 [
     {
         "date": "2025-05",
-        "age": "26",
-        "maritalStatus": "not married | living",
-        "kids": "0",
+        "age": 26,
+        "maritalStatus": "not married | living alone",
+        "kids": 0,
         "reason": "Just created this page and wanted to share the current state of things.",
         "region": "Herentals",
         "sector": "IT",
-        "role": "Shopware developer | Backend developer | Technology Lead Shopware",
+        "role": "Shopware/backend developer | Technology Lead Shopware",
         "salary": {
             "currency": "EUR",
-            "gross": "€3.159,00",
-            "net": "€2.273,51"
+            "gross": 3159.0,
+            "net": 2273.51
         },
         "benefits": {
             "Monetary": [
                 "company car",
-                "'unlimited' gas card",
+                "'unlimited' gas card BeNeLux",
                 "€7 a day meal vouchers",
                 "mobile plan",
-                "company phone (With hardware budget)",
+                "company phone (with hardware budget)",
                 "pension plan"
             ],
             "Quality of life": [
@@ -40,25 +40,25 @@
     },
     {
         "date": "2024-09",
-        "age": "25",
-        "maritalStatus": "not married | living",
-        "kids": "0",
+        "age": 25,
+        "maritalStatus": "not married | living alone",
+        "kids": 0,
         "reason": "Retro-actively adding some records. This is after my second 'promotion'.",
         "region": "Herentals",
         "sector": "IT",
-        "role": "Shopware developer | Backend developer | Technology Lead Shopware",
+        "role": "Shopware/backend developer | Technology Lead Shopware",
         "salary": {
             "currency": "EUR",
-            "gross": "€2.850,00",
-            "net": "€2.196,16"
+            "gross": 2850.0,
+            "net": 2196.16
         },
         "benefits": {
             "Monetary": [
                 "company car",
-                "'unlimited' gas card",
+                "'unlimited' gas card BeNeLux",
                 "€7 a day meal vouchers",
                 "mobile plan",
-                "company phone (With hardware budget)",
+                "company phone (with hardware budget)",
                 "pension plan"
             ],
             "Quality of life": [
@@ -79,22 +79,22 @@
     },
     {
         "date": "2023-06",
-        "age": "24",
-        "maritalStatus": "not married | living",
-        "kids": "0",
+        "age": 24,
+        "maritalStatus": "not married | living alone",
+        "kids": 0,
         "reason": "Retro-actively adding some records. This is a month after I got my first 'promotion'. It's the month after because the month before the holiday pay was also added. This would skew this list imo.",
         "region": "Herentals",
         "sector": "IT",
-        "role": "Shopware developer | Backend developer",
+        "role": "Shopware/backend developer",
         "salary": {
             "currency": "EUR",
-            "gross": "€2.334,66",
-            "net": "€1.992,20"
+            "gross": 2334.66,
+            "net": 1992.2
         },
         "benefits": {
             "Monetary": [
                 "company car",
-                "100 gas card",
+                "100 gas card BeNeLux",
                 "€7 a day meal vouchers",
                 "mobile plan"
             ],
@@ -116,17 +116,17 @@
     },
     {
         "date": "2022-08",
-        "age": "23",
-        "maritalStatus": "not married | living",
-        "kids": "0",
+        "age": 23,
+        "maritalStatus": "not married | living alone",
+        "kids": 0,
         "reason": "Retro-actively adding some records. This is the first paycheck from when I started working after college.",
         "region": "Herentals",
         "sector": "IT",
-        "role": "Shopware developer | Backend developer",
+        "role": "Shopware/backend developer",
         "salary": {
             "currency": "EUR",
-            "gross": "€2.200,00",
-            "net": "€1.951,87"
+            "gross": 2200.0,
+            "net": 1951.87
         },
         "benefits": {
             "Monetary": [

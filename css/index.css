@@ -1,47 +1,428 @@
-* {
+@charset "UTF-8";
+
+:root {
+    color-scheme: dark;
+
+    --bg: #15332c;
+    --surface: #1d453b;
+    --surface-hover: #255347;
+    --border: #5a9c8a;
+    --divider: #3d7566;
+    --text: #edfffb;
+    --text-muted: #b5d6cc;
+    --link: #8ae6cb;
+    --focus: #ffd866;
+    --positive: #8be8ae;
+    --negative: #ffab9c;
+
+    --radius: 6px;
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
-    font-family: sans-serif;
+}
+
+[hidden] {
+    display: none !important;
 }
 
 body {
-  background-color: #2a6c5c;
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font);
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    overflow-x: hidden;
+}
 
-  display: flex;
-  justify-content: center;
+/* Repeating money emoji wallpaper. Decorative only, sits behind everything. */
+body::before {
+    content: "";
+    position: fixed;
+    /* Oversized by one tile so the layer can slide without showing gaps. */
+    inset: -200px;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.12;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cg font-size='34'%3E%3Ctext x='14' y='54' transform='rotate(-12 30 40)'%3E💰%3C/text%3E%3Ctext x='116' y='70' transform='rotate(10 130 60)'%3E💸%3C/text%3E%3Ctext x='50' y='160' transform='rotate(8 60 150)'%3E💶%3C/text%3E%3Ctext x='140' y='176' transform='rotate(-10 150 165)'%3E🤑%3C/text%3E%3C/g%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    background-repeat: repeat;
+    animation: drift 120s linear infinite;
+}
+
+/* Moves exactly one tile (200px), so the loop is seamless. */
+@keyframes drift {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(200px, 200px);
+    }
 }
 
 main {
-    background-color: #193931;
-    width: 1000px;
-
-    padding: 1rem 2rem;
-
-    margin-top: 4rem;
-
-    * {
-        color: #edfffb;
-    }
-
-    @media (max-width: 1000px) {
-        width: 500px;
-    }
-
-    @media (max-width: 550px) {
-        width: 100vw;
-        margin-top: 0;
-    }
+    display: grid;
+    gap: 2rem;
+    width: min(100% - 2rem, 44rem);
+    margin-inline: auto;
+    padding-block: 3rem 4rem;
 }
 
-.salary-item-container {
-    margin-left: 10px;
-
-    .item {
-        border-left: #2a6c5c solid 5px;
-        padding-left: 10px;
-        margin-bottom: 10px;
-    }
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0;
 }
 
-.point-cursor {
+h1 {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 1.4rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--link);
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+}
+
+.skip-link {
+    position: absolute;
+    top: 0;
+    left: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: #000;
+    background: var(--focus);
+    transform: translateY(-120%);
+}
+
+.skip-link:focus {
+    transform: translateY(0.5rem);
+}
+
+/* ---------- Panels ---------- */
+
+.panel {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--divider);
+    border-radius: var(--radius);
+}
+
+.panel>*+* {
+    margin-top: 0.75rem;
+}
+
+.panel h2 {
+    margin-bottom: 0;
+}
+
+.intro h1 {
+    margin-bottom: 0.5rem;
+}
+
+.notes {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.notes li+li {
+    margin-top: 0.25rem;
+}
+
+/* ---------- Stats ---------- */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 1rem;
+    margin: 0;
+}
+
+.stats:empty {
+    display: none;
+}
+
+.stat {
+    padding: 1rem 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--divider);
+    border-radius: var(--radius);
+}
+
+.stat dt {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.stat dd {
+    margin: 0.1rem 0 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* ---------- Timeline (accordion list) ---------- */
+
+.timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.timeline-item {
+    scroll-margin-top: 1rem;
+}
+
+.item {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.item summary {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-areas: "main pay icon";
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
     cursor: pointer;
+    list-style: none;
+}
+
+.item summary::-webkit-details-marker {
+    display: none;
+}
+
+.item summary:hover {
+    background: var(--surface-hover);
+}
+
+.item[open] summary {
+    border-bottom: 2px solid var(--border);
+}
+
+/*
+  The +/- toggle is drawn with gradients instead of a text glyph,
+  so it is perfectly centred regardless of font metrics.
+  It has no text content, so screen readers ignore it.
+*/
+.item summary::after {
+    grid-area: icon;
+    content: "";
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    background:
+        linear-gradient(var(--text), var(--text)) center / 0.9rem 2px no-repeat,
+        linear-gradient(var(--text), var(--text)) center / 2px 0.9rem no-repeat;
+}
+
+.item[open] summary::after {
+    background:
+        linear-gradient(var(--text), var(--text)) center / 0.9rem 2px no-repeat;
+}
+
+.summary-main {
+    grid-area: main;
+    display: grid;
+    min-width: 0;
+}
+
+.summary-date {
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.summary-role {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.summary-pay {
+    grid-area: pay;
+    display: grid;
+    gap: 0.1rem;
+    min-width: 10.5rem;
+}
+
+.pay-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.pay-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.pay-value {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.delta {
+    margin-top: 0.15rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-align: right;
+}
+
+.delta[data-trend="up"] {
+    color: var(--positive);
+}
+
+.delta[data-trend="down"] {
+    color: var(--negative);
+}
+
+/* ---------- Details ---------- */
+
+.item-body {
+    padding: 1.25rem;
+}
+
+.item-body h3 {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 1rem 1.5rem;
+    margin: 0;
+}
+
+.facts dt,
+.benefit-group h4 {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.facts dd {
+    margin: 0.1rem 0 0;
+}
+
+.span-full {
+    grid-column: 1 / -1;
+}
+
+.benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 1rem 1.5rem;
+    margin-top: 0.75rem;
+}
+
+.benefit-group ul {
+    margin: 0.25rem 0 0;
+    padding-left: 1.25rem;
+}
+
+.error {
+    color: var(--negative);
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 36rem) {
+    main {
+        width: min(100% - 1rem, 44rem);
+        padding-block: 1.5rem 3rem;
+    }
+
+    .panel {
+        padding: 1.25rem;
+    }
+
+    .item summary {
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+            "main icon"
+            "pay  pay";
+        padding: 0.9rem 1rem;
+    }
+
+    .summary-pay {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.25rem 1rem;
+        min-width: 0;
+    }
+
+    .pay-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .delta {
+        grid-column: 1 / -1;
+        margin-top: 0;
+        text-align: left;
+    }
+
+    .item-body {
+        padding: 1rem;
+    }
+}
+
+/* ---------- User preferences ---------- */
+
+/* @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    body::before {
+        animation: none;
+    }
+} */
+
+@media (forced-colors: active) {
+    body::before {
+        display: none;
+    }
+
+    .item,
+    .item summary::after,
+    .item[open] summary {
+        border-color: CanvasText;
+    }
+
+    /* Gradients are removed in forced-colours mode, so restore the symbol as text. */
+    .item summary::after {
+        content: "+";
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+    }
+
+    .item[open] summary::after {
+        content: "\2212";
+    }
 }

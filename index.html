@@ -1,86 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Salary transparency</title>
+    <meta name="description" content="A personal, transparent timeline of my career and salary progression.">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#15332c">
 
-    <link rel="stylesheet" href="./css/index.css">
+    <meta property="og:title" content="Salary transparency">
+    <meta property="og:description" content="A personal, transparent timeline of my career and salary progression.">
+    <meta property="og:type" content="website">
 
-    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="css/index.css">
+    <script type="module" src="js/index.js"></script>
 </head>
+
 <body>
+    <a class="skip-link" href="#timeline-title">Skip to the timeline</a>
+
     <main>
-        <section>
+        <header class="panel intro">
             <h1>Salary transparency</h1>
-            <p>I like transparency and got inspired by <a href="https://xeiaso.net/salary-transparency/" target="_blank">Xe Iaso</a>. </p>
-            <p>Any questions? Hit me up on <a href="https://www.instagram.com/baileythedino/" target="_blank">Instagram</a> or <a href="https://www.linkedin.com/in/baileylievens/" target="_blank">LinkedIn</a>.</p>
-            <p>This list gets updated when anything I deem important/interesting happens. Don't bug me about it.</p>
+            <p>
+                I like transparency and got inspired by
+                <a href="https://xeiaso.net/salary-transparency/" target="_blank" rel="noopener noreferrer">Xe Iaso</a>.
+            </p>
+            <p>
+                Any questions? Hit me up on
+                <a href="https://www.instagram.com/baileythedino/" target="_blank"
+                    rel="noopener noreferrer">Instagram</a>
+                or
+                <a href="https://www.linkedin.com/in/baileylievens/" target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a>.
+            </p>
+            <p>This list gets updated when anything I deem important or interesting happens. Don't bug me about it.</p>
+            <p>Want the raw data? Take a look at <a href="data.json">data.json</a>.</p>
+        </header>
 
-            <br>
+        <dl id="stats" class="stats"></dl>
 
-            <p>If you happen to want a json version of the data. Take a look here: <a href="./data.json">data.json</a></p>
+        <section class="panel" aria-labelledby="notes-title">
+            <h2 id="notes-title">Side notes</h2>
+            <ul class="notes">
+                <li>Select a record to open it and see more details.</li>
+                <li>Everything is in euros.</li>
+                <li>Net and gross are shown on every record, since imo those are the most important numbers.</li>
+                <li>13th month and/or holiday pay is not included in salaries.</li>
+                <li>Records from before finishing college are not included.</li>
+            </ul>
         </section>
-        
-        <br><br>
 
-        <section>
-            <h2>Side notes</h2>
-            <ol>
-                <li>Click open a detail block to see more details</li>
-                <li>Everything is in euro's</li>
-                <li>Titles contain the net salary since imo that's the most important</li>
-                <li>13th month and/or holiday pay is not added to salaries</li>
-                <li>Records before finishing college are not included</li>
+        <section aria-labelledby="timeline-title">
+            <h2 id="timeline-title">Career / salary timeline</h2>
+            <ol id="timeline" class="timeline" role="list">
+                <noscript>
+                    <li>This page needs JavaScript to render the timeline. The data is available in <a
+                            href="data.json">data.json</a>.</li>
+                </noscript>
             </ol>
-        </section>
-
-        <br><br>
-
-        <section>
-            <h2>Carreer/Salary timeline</h2>
-            <div class="salary-item-container"></div>
         </section>
     </main>
 
-    <template id="detail-item">
-        <details class="item">
-            <summary class="point-cursor"><span class="summary-date"></span> ------- <span class="summary-net"></span></summary>
-            
-            <p><strong>age:</strong></p>
-            <p><span class="age"></span></p>
-            <br>
+    <template id="timeline-item-template">
+        <li class="timeline-item">
+            <details class="item">
+                <summary>
+                    <span class="summary-main">
+                        <time class="summary-date" data-field="date"></time>
+                        <span class="summary-role" data-field="role"></span>
+                    </span>
 
-            <p><strong>marital status:</strong></p>
-            <p><span class="marital-status"></span></p>
-            <br>
+                    <span class="summary-pay">
+                        <span class="pay-row">
+                            <span class="pay-label">Net</span>
+                            <span class="pay-value" data-field="net"></span>
+                        </span>
+                        <span class="pay-row">
+                            <span class="pay-label">Gross</span>
+                            <span class="pay-value" data-field="gross"></span>
+                        </span>
+                        <span class="delta" data-field="delta" hidden></span>
+                    </span>
+                </summary>
 
-            <p><strong>kids:</strong></p>
-            <p><span class="kids"></span></p>
-            <br>
-            
-            <p><strong>reason:</strong></p>
-            <p><span class="reason"></span></p>
-            <br>
+                <div class="item-body">
+                    <dl class="facts">
+                        <div>
+                            <dt>Age</dt>
+                            <dd data-field="age"></dd>
+                        </div>
+                        <div>
+                            <dt>Marital status</dt>
+                            <dd data-field="maritalStatus"></dd>
+                        </div>
+                        <div>
+                            <dt>Kids</dt>
+                            <dd data-field="kids"></dd>
+                        </div>
+                        <div>
+                            <dt>Region</dt>
+                            <dd data-field="region"></dd>
+                        </div>
+                        <div>
+                            <dt>Sector</dt>
+                            <dd data-field="sector"></dd>
+                        </div>
+                        <div class="span-full">
+                            <dt>Reason</dt>
+                            <dd data-field="reason"></dd>
+                        </div>
+                    </dl>
 
-            <p><strong>region/sector:</strong></p>
-            <p><span class="region"></span> | <span class="sector"></span></p>
-            <br>
-
-            <p><strong>role:</strong></p>
-            <p><span class="role"></span></p>
-            <br>
-
-            <p><strong>gross/net:</strong></p>
-            <p>gross: <span class="gross"></span> | net: <span class="net"></span></p>
-            <br>
-
-            <p><strong>benefits:</strong></p>
-            <ul class="benefits"></ul>
-
-        </details>
+                    <h3>Benefits</h3>
+                    <div class="benefits" data-field="benefits"></div>
+                </div>
+            </details>
+        </li>
     </template>
-
-    <script src="./js/index.js"></script>
 </body>
+
 </html>
